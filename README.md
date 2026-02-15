@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kanban Task Board (IndexedDB + Native Drag & Drop)
 
-## Getting Started
+A lightweight **Kanban-style task management board** built with **Next.js, TypeScript, and IndexedDB (Dexie)** featuring persistent storage and smooth native drag-and-drop interactions.
 
-First, run the development server:
+This project was developed as a **frontend/full-stack intern take-home assignment**, focusing on clean architecture, offline persistence, and intuitive UX.
+
+---
+
+## ✨ Features
+
+### Core Functionality
+
+* Create, edit, and delete tasks
+* Three workflow stages:
+
+  * **To Do**
+  * **In Progress**
+  * **Done**
+* **Native HTML5 drag-and-drop** to move tasks between columns
+* Drop into **empty columns supported**
+* Instant UI updates using **useReducer state management**
+* **Persistent storage with IndexedDB (Dexie)**
+  → tasks remain after page refresh
+
+### UX Enhancements
+
+* **Glassmorphism**: Backdrop blur effects on header and column containers.
+* **Responsive Layout**: Fluid columns that take the whole board with minimum width constraints.
+* Drag feedback (opacity + scale) and column highlight on hover.
+* Auto-expanding textareas for description editing.
+
+---
+
+## 🏗 Tech Stack
+
+* **Framework:** Next.js 15 (App Router)
+* **Language:** TypeScript
+* **State Management:** React `useReducer`
+* **Client Database:** IndexedDB via **Dexie.js**
+* **Styling:** Tailwind CSS (Modern Oklch palette)
+* **Icons:** Lucide-React
+* **Drag & Drop:** Native HTML5 Drag API
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+│
+├── components/
+│   ├── Board.tsx
+│   ├── Column.tsx
+│   ├── TaskCard.tsx
+│   ├── AddTaskForm.tsx
+│   └── Header.tsx
+│
+├── lib/
+│   ├── storage.ts      # Dexie DB configuration
+│   └── taskService.ts  # Database abstraction layer
+│
+├── store/
+│   └── taskReducer.ts  # Global task state management
+│
+├── styles/
+│   └── globals.css     # Premium dark theme tokens
+│
+├── types/
+│   └── task.ts         # TypeScript definitions
+│
+└── utils/
+    └── constants.ts    # Board configuration
+```
+
+---
+
+## ⚙️ Setup & Installation
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd kanban-board
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open **http://localhost:3000** in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 💾 Data Persistence
 
-## Learn More
+Tasks are stored locally using **IndexedDB** via Dexie:
 
-To learn more about Next.js, take a look at the following resources:
+* Works **offline**
+* No backend required
+* Data survives refresh and browser restart
+* Easily extendable to a real API later
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧠 Architecture Decisions
 
-## Deploy on Vercel
+### Why useReducer instead of useState?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Centralized state transitions
+* Predictable updates
+* Scales better for CRUD + drag interactions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Why IndexedDB (Dexie)?
+
+* Persistent client-side storage
+* Asynchronous and large-data friendly
+* Cleaner API compared to raw IndexedDB
+
+### Why Native Drag & Drop?
+
+* Zero external dependency
+* High reliability for simple Kanban behavior
+* Faster implementation for assignment scope
+
+---
+
+## 🚀 Possible Future Improvements
+
+* Reordering tasks **within the same column**
+* Keyboard accessibility for drag operations
+* Drag preview overlay
+* Backend sync (Node.js / Supabase / Firebase)
+* User authentication
+* Real-time collaboration
+
+---
+
+## 📸 Demo
+
+*Add a deployed link or demo video here (Vercel / Loom).*
+
+---
+
+## 👤 Author
+
+**Soham Sinha**
+Frontend / Full-Stack Developer
+Focused on **React, Next.js, and product-driven UI engineering**.
+
+---
+
+## 📄 License
+
+This project is created for **educational and evaluation purposes**.
