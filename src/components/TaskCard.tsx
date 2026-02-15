@@ -199,9 +199,10 @@ export function TaskCard({
                                                 onEdit({ ...task, description: description.trim() })
                                                 setIsExpanded(false)
                                             }}
-                                            className="h-7 text-xs bg-primary hover:bg-primary/90 text-primary-foreground"
+                                            className="h-7 px-3 text-xs bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg flex items-center gap-1.5 transition-all active:scale-95 shadow-lg shadow-primary/20"
                                         >
-                                            Save
+                                            <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
+                                            Save Changes
                                         </Button>
                                     </div>
                                 )}
