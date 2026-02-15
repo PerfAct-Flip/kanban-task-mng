@@ -1,45 +1,13 @@
-# Kanban Task Board (IndexedDB + Native Drag & Drop)
+Kanban Task Board (IndexedDB + Native Drag & Drop)
 
 A lightweight **Kanban-style task management board** built with **Next.js, TypeScript, and IndexedDB (Dexie)** featuring persistent storage and smooth native drag-and-drop interactions.
 
-This project was developed as a **frontend/full-stack intern take-home assignment**, focusing on clean architecture, offline persistence, and intuitive UX.
-
 ---
+## 🏗 Tech Stack Explanation
 
-## ✨ Features
-
-### Core Functionality
-
-* Create, edit, and delete tasks
-* Three workflow stages:
-
-  * **To Do**
-  * **In Progress**
-  * **Done**
-* **Native HTML5 drag-and-drop** to move tasks between columns
-* Drop into **empty columns supported**
-* Instant UI updates using **useReducer state management**
-* **Persistent storage with IndexedDB (Dexie)**
-  → tasks remain after page refresh
-
-### UX Enhancements
-
-* **Glassmorphism**: Backdrop blur effects on header and column containers.
-* **Responsive Layout**: Fluid columns that take the whole board with minimum width constraints.
-* Drag feedback (opacity + scale) and column highlight on hover.
-* Auto-expanding textareas for description editing.
-
----
-
-## 🏗 Tech Stack
-
-* **Framework:** Next.js 15 (App Router)
-* **Language:** TypeScript
-* **State Management:** React `useReducer`
-* **Client Database:** IndexedDB via **Dexie.js**
-* **Styling:** Tailwind CSS (Modern Oklch palette)
-* **Icons:** Lucide-React
-* **Drag & Drop:** Native HTML5 Drag API
+This project uses **Next.js with TypeScript** to ensure scalable structure, type safety, and modern React architecture through the App Router.
+**IndexedDB via Dexie** was chosen for reliable client-side persistence without requiring a backend, enabling offline capability.
+**Native HTML5 drag-and-drop** was used instead of external libraries to keep the implementation lightweight, dependency-free, and stable for the assignment scope.
 
 ---
 
@@ -63,7 +31,7 @@ src/
 │   └── taskReducer.ts  # Global task state management
 │
 ├── styles/
-│   └── globals.css     # Premium dark theme tokens
+│   └── globals.css     # Theme and global styles
 │
 ├── types/
 │   └── task.ts         # TypeScript definitions
@@ -74,12 +42,12 @@ src/
 
 ---
 
-## ⚙️ Setup & Installation
+## ⚙️ Setup Instructions
 
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/PerfAct-Flip/kanban-task-mng.git
 cd kanban-board
 ```
 
@@ -89,64 +57,60 @@ cd kanban-board
 npm install
 ```
 
-### 3. Run development server
+### 3. Run the development server
 
 ```bash
 npm run dev
 ```
 
-Open **http://localhost:3000** in your browser.
+### 4. Open in browser
+
+Navigate to:
+
+```
+http://localhost:3000
+```
+
+The Kanban board will load with **persistent local storage enabled**.
 
 ---
 
-## 💾 Data Persistence
+## 🤖 AI Tool Usage
 
-Tasks are stored locally using **IndexedDB** via Dexie:
+AI tools were used selectively to support early-stage development and learning:
 
-* Works **offline**
-* No backend required
-* Data survives refresh and browser restart
-* Easily extendable to a real API later
+* Assisted in **initial architecture planning**, including reducer structure and overall drag-and-drop flow
+* Helped with **debugging and refactoring** to improve code clarity, separation of concerns, and maintainable structure
+* Provided guidance while learning **React useReducer**, which was unfamiliar at the start of the project
+* Supported troubleshooting when attempting **dnd-kit–based drag-and-drop**; after encountering stability issues, the final implementation was rebuilt using **native HTML5 drag-and-drop**
+* Primarily used for an **initial productivity boost** after creating the base layout and core project setup independently
+
+All final implementation decisions, code structure, and testing were completed manually.
 
 ---
 
-## 🧠 Architecture Decisions
+## ⚠️ Known Issues / Limitations
 
-### Why useReducer instead of useState?
+* Tasks **cannot yet be reordered within the same column** (only moved across columns)
+* Drag-and-drop currently supports **mouse interaction only** (no keyboard accessibility)
+* Data is stored **locally in the browser**, so it does not sync across devices
 
-* Centralized state transitions
-* Predictable updates
-* Scales better for CRUD + drag interactions
-
-### Why IndexedDB (Dexie)?
-
-* Persistent client-side storage
-* Asynchronous and large-data friendly
-* Cleaner API compared to raw IndexedDB
-
-### Why Native Drag & Drop?
-
-* Zero external dependency
-* High reliability for simple Kanban behavior
-* Faster implementation for assignment scope
+These are identified as **future improvement areas**.
 
 ---
 
 ## 🚀 Possible Future Improvements
 
 * Reordering tasks **within the same column**
-* Keyboard accessibility for drag operations
-* Drag preview overlay
-* Backend sync (Node.js / Supabase / Firebase)
-* User authentication
-* Real-time collaboration
+* Search/filter tasks by title
+* Backend sync
+
 
 ---
 
 ## 📸 Demo
 
-*Add a deployed link or demo video here (Vercel / Loom).*
-
+https://www.loom.com/share/bb8c6da9cba84c58a73cb5a0e734506b
 ---
 
 ## 👤 Author
