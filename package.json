@@ -9,8 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@dnd-kit/helpers": "^0.2.4",
-    "@dnd-kit/react": "^0.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dexie": "^4.3.0",
